@@ -1,0 +1,44 @@
+{
+  "schema_version": "vllm-hust-mod-metadata-v1",
+  "mod_id": "org.vllm-hust.stateaxis-async-kv-transfer",
+  "repository": "stateaxis-async-kv-transfer",
+  "display_name": "stateaxis-async-kv-transfer",
+  "canonical_repository": "https://github.com/vLLM-HUST/stateaxis-async-kv-transfer",
+  "responsibility": {
+    "organization": "vLLM-HUST",
+    "maintainers": [
+      {
+        "name": "Shuhao Zhang (Tony)",
+        "github": "ShuhaoZhangTony"
+      }
+    ],
+    "advisor_status": "not_declared",
+    "advisors": []
+  },
+  "lifecycle": {
+    "status": "experimental",
+    "default_enabled": false,
+    "activation_contract": "Import-only research descriptor; activation is refused until the StateAxis host contract and independent implementation are reviewed.",
+    "rollback_contract": "Disable or forget the descriptor and run the unchanged StateAxis host without this MOD."
+  },
+  "scope": {
+    "mechanism": "bounded_async_kv_transfer_lane",
+    "supported_workloads": [],
+    "out_of_scope": [
+      "general performance claims",
+      "automatic inheritance from StateAxis aggregate evidence"
+    ]
+  },
+  "evidence": {
+    "qualification": "qualified-in-tested-cell",
+    "latest_result": "evidence/ISSUE76_ASYNC_TRANSFER_LANE_CLOSURE_20260815.md",
+    "index": "EVIDENCE.md",
+    "performance_claims": [
+      {
+        "label": "matched-real-online-tested-cell",
+        "scope": "frozen StateAxis source evidence only",
+        "result": "Bounded device-overlap evidence is positive; it is not cross-instance tiering or a capacity claim."
+      }
+    ]
+  }
+}
