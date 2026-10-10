@@ -1,5 +1,32 @@
 # stateaxis-async-kv-transfer
 
+Default-off StateAxis MOD for a bounded asynchronous host-to-device KV restore
+lane. The MOD supplies an active Manifest 0.3 contract and a reusable Rust
+coordinator; StateAxis owns the device stream, snapshot memory, and publication.
+
+The coordinator admits only nonzero `(state_id, generation, snapshot_sha256)`
+identities, coalesces exact duplicates, bounds both unique work and correlation
+IDs, issues monotonically changing leases, and requires explicit commit or
+abort. The StateAxis activation contract sets the retry budget to zero: any
+device-transfer error rolls back and fails closed rather than replaying DMA.
+
+The mechanism is not enabled by importing this package or setting an environment
+variable directly. It must be selected by vLLM-HUST Extension Manager/ECPA and
+accepted by StateAxis's hash-bound `--additional-config` parser.
+
+## Validation
+
+```bash
+python -m pytest -q
+ruff check .
+ruff format --check .
+cargo test --manifest-path native/Cargo.toml
+cargo clippy --manifest-path native/Cargo.toml --all-targets -- -D warnings
+```
+
+See `EVIDENCE.md` for the strict boundary between historical evidence and fresh
+version qualification.
+
 Extension ID: `org.vllm-hust.stateaxis-async-kv-transfer`
 
 Out-of-order bounded device KV transfer overlap with explicit ownership and drain.

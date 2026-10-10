@@ -1,0 +1,42 @@
+{
+  "schema_version": "stateaxis-research-mod/v1",
+  "mod_id": "org.vllm-hust.stateaxis-async-kv-transfer",
+  "version": "0.2.0",
+  "mechanism": {
+    "name": "bounded-generation-safe-async-kv-restore",
+    "enabled": true,
+    "max_pending_keys": 64,
+    "max_correlations": 64,
+    "max_retries": 0,
+    "generation_bound": true,
+    "snapshot_sha256_required": true,
+    "transactional_restore": true,
+    "serialized_completion": true,
+    "fail_closed": true
+  },
+  "host_contract": {
+    "provider": "stateaxis",
+    "api_range": ">=1,<2",
+    "implementation": "statecentric_engine:parse_async_kv_transfer_additional_config",
+    "effect_counters": [
+      "async_kv_transfer_submitted",
+      "async_kv_transfer_completed",
+      "async_kv_transfer_failed"
+    ]
+  },
+  "qualification": {
+    "performance_qualified": false,
+    "evidence_label": "historical-matched-real-online-tested-cell",
+    "scope": "Qwen2.5-14B BF16 host-tier restore, three serialized-control and three async-candidate NPU runs",
+    "blockers": [
+      "only three repeats per arm were recorded",
+      "the historical result predates the independent Manifest 0.3 implementation",
+      "the positive result is limited to the frozen host-tier restore workload and is not a general throughput claim"
+    ]
+  },
+  "source": {
+    "repository": "Qixin-Gaoke/stateaxis",
+    "commit": "7562b5fa6f42e2e045a877b53ac934739e2cf230",
+    "issues": [76]
+  }
+}

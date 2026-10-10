@@ -18,26 +18,28 @@
   "lifecycle": {
     "status": "experimental",
     "default_enabled": false,
-    "activation_contract": "Import-only research descriptor; activation is refused until the StateAxis host contract and independent implementation are reviewed.",
-    "rollback_contract": "Disable or forget the descriptor and run the unchanged StateAxis host without this MOD."
+    "activation_contract": "Manifest 0.3 active, default-off, ECPA-only activation of the hash-bound bounded transfer contract.",
+    "rollback_contract": "Omit this MOD from the Extension Manager plan; StateAxis keeps its serialized transfer path and no MOD identity."
   },
   "scope": {
     "mechanism": "bounded_async_kv_transfer_lane",
-    "supported_workloads": [],
+    "supported_workloads": [
+      "host-tier KV restore with reusable snapshots and compute/transfer overlap"
+    ],
     "out_of_scope": [
       "general performance claims",
       "automatic inheritance from StateAxis aggregate evidence"
     ]
   },
   "evidence": {
-    "qualification": "qualified-in-tested-cell",
+    "qualification": "historical-positive-version-unqualified",
     "latest_result": "evidence/ISSUE76_ASYNC_TRANSFER_LANE_CLOSURE_20260815.md",
     "index": "EVIDENCE.md",
     "performance_claims": [
       {
         "label": "matched-real-online-tested-cell",
         "scope": "frozen StateAxis source evidence only",
-        "result": "Bounded device-overlap evidence is positive; it is not cross-instance tiering or a capacity claim."
+        "result": "Historical bounded device-overlap evidence is positive in one frozen 3+3 cell; version 0.2.0 requires fresh ECPA ON/OFF qualification and makes no general claim."
       }
     ]
   }

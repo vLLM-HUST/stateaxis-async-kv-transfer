@@ -1,8 +1,8 @@
 {
   "schema_version": "0.3-experimental",
   "extension_id": "org.vllm-hust.stateaxis-async-kv-transfer",
-  "extension_version": "0.1.0.dev0",
-  "kind": "in_process_plugin",
+  "extension_version": "0.2.0",
+  "kind": "runtime_bridge",
   "host": {
     "provider": "stateaxis",
     "name": "stateaxis",
@@ -23,15 +23,20 @@
   ],
   "implementation": [
     {
-      "type": "python_module",
-      "module": "stateaxis_async_kv_transfer",
-      "object": "StateaxisAsyncKvTransferContractProposal",
-      "status": "import_only"
+      "type": "host_builtin",
+      "symbol": "statecentric_engine:parse_async_kv_transfer_additional_config",
+      "status": "active"
     }
   ],
   "requires_services": [],
   "requires_extensions": [],
-  "resource_claims": [],
+  "resource_claims": [
+    {
+      "resource": "stateaxis.native.protocol-transfer-lane",
+      "scope": "stateaxis-process",
+      "mode": "exclusive"
+    }
+  ],
   "components": [
     {
       "component_id": "stateaxis-async-kv-transfer",
@@ -44,13 +49,36 @@
         "device"
       ],
       "isolation": "trusted_in_process",
-      "implementation_ref": "stateaxis_async_kv_transfer:StateaxisAsyncKvTransferContractProposal",
+      "implementation_ref": "stateaxis_async_kv_transfer:async_kv_transfer",
       "permissions": []
     }
   ],
   "activation": {
-    "entry_points": [],
+    "entry_points": [
+      {
+        "group": "stateaxis.mod_handlers",
+        "name": "async_kv_transfer"
+      }
+    ],
     "environment": {},
-    "additional_config": {}
+    "additional_config": {
+      "stateaxis_async_kv_transfer": {
+        "enabled": true,
+        "max_pending_keys": 64,
+        "max_correlations": 64,
+        "max_retries": 0,
+        "generation_bound": true,
+        "snapshot_sha256_required": true,
+        "transactional_restore": true,
+        "serialized_completion": true,
+        "fail_closed": true
+      },
+      "stateaxis_mod": {
+        "mod_id": "org.vllm-hust.stateaxis-async-kv-transfer",
+        "version": "0.2.0",
+        "manifest_sha256": "849edd08e1f888f27bd5abc295813bc784b1a9e643f1b8792cd8aaf06651510e",
+        "performance_qualified": false
+      }
+    }
   }
 }
