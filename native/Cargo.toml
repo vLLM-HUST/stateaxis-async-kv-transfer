@@ -1,0 +1,16 @@
+[package]
+name = "stateaxis-async-kv-transfer"
+version = "0.2.0"
+edition = "2024"
+license = "Apache-2.0"
+description = "Bounded identity-safe asynchronous KV transfer coordinator for StateAxis"
+
+[lib]
+path = "src/lib.rs"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = "deny"
+pedantic = "deny"
