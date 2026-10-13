@@ -32,14 +32,14 @@
     ]
   },
   "evidence": {
-    "qualification": "historical-positive-version-unqualified",
-    "latest_result": "evidence/ISSUE76_ASYNC_TRANSFER_LANE_CLOSURE_20260815.md",
+    "qualification": "historical_matched_real_npu_component_positive_active_version_performance_unqualified",
+    "latest_result": "evidence/issue76-async-transfer-20260815-r5/result.json",
     "index": "EVIDENCE.md",
     "performance_claims": [
       {
-        "label": "matched-real-online-tested-cell",
-        "scope": "frozen StateAxis source evidence only",
-        "result": "Historical bounded device-overlap evidence is positive in one frozen 3+3 cell; version 0.2.0 requires fresh ECPA ON/OFF qualification and makes no general claim."
+        "label": "historical-matched-real-npu-component-positive",
+        "scope": "frozen StateAxis issue #76 R5; Qwen2.5-14B BF16; Ascend 910B2; TP1; one host-tier restore concurrent with unrelated compute; three fresh processes per arm",
+        "result": "All six runs passed exactness and lifecycle checks. Host-tier-hit p50 changed from 592.597 ms to 333.716 ms (-43.686%), pair makespan p50 from 607.648 ms to 355.473 ms, and pair throughput from 3.291 to 5.626 ops/s; overlap was proven in 3/3 candidate runs and peak HBM was unchanged within measurement granularity. This historical component result does not qualify active version 0.2.0 or establish general serving speedup."
       }
     ]
   }

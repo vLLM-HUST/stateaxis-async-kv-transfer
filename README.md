@@ -14,6 +14,29 @@ The mechanism is not enabled by importing this package or setting an environment
 variable directly. It must be selected by vLLM-HUST Extension Manager/ECPA and
 accepted by StateAxis's hash-bound `--additional-config` parser.
 
+Extension ID: `org.vllm-hust.stateaxis-async-kv-transfer`
+
+## Evidence boundary
+
+Status: **historical matched real-NPU component-positive; active version
+performance-unqualified**.
+
+The frozen StateAxis R5 campaign ran Qwen2.5-14B BF16 on one Ascend 910B2 in
+three fresh processes per arm. All six runs passed exactness, lifecycle and state
+identity checks. Candidate host-tier-hit p50 fell from 592.597 ms to 333.716 ms
+(-43.686%); concurrent-pair makespan p50 fell from 607.648 ms to 355.473 ms;
+pair throughput rose from 3.291 to 5.626 ops/s. Candidate device overlap was
+observed in 3/3 runs and peak HBM remained within the same 44,174--44,177 MiB
+range.
+
+This is a directional, workload-scoped result for a frozen historical
+implementation. It does not establish statistical significance, general serving
+throughput, longer-context behavior, capacity scaling or qualification of MOD
+version 0.2.0. The current revision has separate 3+3 matched-process exactness and
+lifecycle evidence, but that deterministic worker does not execute accelerator
+kernels. See `EVIDENCE.md` and the machine-readable R5 bundle under
+`evidence/issue76-async-transfer-20260815-r5/`.
+
 ## Validation
 
 ```bash
@@ -26,44 +49,5 @@ cargo clippy --manifest-path native/Cargo.toml --all-targets -- -D warnings
 
 See `EVIDENCE.md` for the strict boundary between historical evidence and fresh
 version qualification.
-
-Extension ID: `org.vllm-hust.stateaxis-async-kv-transfer`
-
-Out-of-order bounded device KV transfer overlap with explicit ownership and drain.
-
-This repository is the independent MOD boundary for StateAxis issues [#76](https://github.com/Qixin-Gaoke/stateaxis/issues/76).
-It is deliberately `import_only`, default-off, and cannot be enabled. The split does
-not inherit correctness, device, performance, or publication qualification from the
-aggregate StateAxis repository.
-
-## Evidence boundary
-
-Status: **scoped-positive**.
-
-Bounded device-overlap evidence is positive; it is not cross-instance tiering or a capacity claim.
-
-The copied evidence and its SHA-256 are recorded in `PROVENANCE.json`. Negative,
-failed, and inconclusive results are retained. Microbenchmarks and component results
-must not be restated as online end-to-end gains.
-
-## Install and inspect
-
-```bash
-python -m pip install .
-vllm-hust-ext extension inspect org.vllm-hust.stateaxis-async-kv-transfer
-vllm-hust-ext extension check org.vllm-hust.stateaxis-async-kv-transfer
-```
-
-Discovery does not enable the MOD. A future active revision must extract an
-independently reviewable implementation, declare exclusive resources where needed,
-and pass exactness, lifecycle, release, failure-recovery, and matched real-online
-gates.
-
-## Validate
-
-```bash
-python -m pip install -e '.[test]'
-pytest -q
-```
 
 Maintainer: Shuhao Zhang (Tony), directly responsible; no advisor is declared.
