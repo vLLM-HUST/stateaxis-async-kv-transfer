@@ -21,21 +21,14 @@ Extension ID: `org.vllm-hust.stateaxis-async-kv-transfer`
 Status: **historical matched real-NPU component-positive; active version
 performance-unqualified**.
 
-The frozen StateAxis R5 campaign ran Qwen2.5-14B BF16 on one Ascend 910B2 in
-three fresh processes per arm. All six runs passed exactness, lifecycle and state
-identity checks. Candidate host-tier-hit p50 fell from 592.597 ms to 333.716 ms
-(-43.686%); concurrent-pair makespan p50 fell from 607.648 ms to 355.473 ms;
-pair throughput rose from 3.291 to 5.626 ops/s. Candidate device overlap was
-observed in 3/3 runs and peak HBM remained within the same 44,174--44,177 MiB
-range.
+Original measured figures, raw records, failed attempts and limitations are now
+maintained in [benchmark's frozen report](https://github.com/vLLM-HUST/vllm-hust-benchmark/blob/ddc4f6a3290e447260fc8f6c03ea36d3ca514e23/archive/mod-git-20261021/stateaxis-async-kv-transfer/snapshot/README.md) and
+[original evidence index](https://github.com/vLLM-HUST/vllm-hust-benchmark/blob/ddc4f6a3290e447260fc8f6c03ea36d3ca514e23/archive/mod-git-20261021/stateaxis-async-kv-transfer/snapshot/EVIDENCE.md). See [EVIDENCE.md](EVIDENCE.md)
+for immutable source links and verified external-cache retrieval.
 
-This is a directional, workload-scoped result for a frozen historical
-implementation. It does not establish statistical significance, general serving
-throughput, longer-context behavior, capacity scaling or qualification of MOD
-version 0.2.0. The current revision has separate 3+3 matched-process exactness and
-lifecycle evidence, but that deterministic worker does not execute accelerator
-kernels. See `EVIDENCE.md` and the machine-readable R5 bundle under
-`evidence/issue76-async-transfer-20260815-r5/`.
+Historical component-positive evidence does not qualify the active MOD.
+Matched-process lifecycle checks use a deterministic worker, not accelerator
+kernels; they establish no general serving performance gain.
 
 ## Validation
 
