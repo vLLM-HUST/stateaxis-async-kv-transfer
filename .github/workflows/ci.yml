@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-      - run: python -m pip install "vllm-hust-ext @ git+https://github.com/vLLM-HUST/extension-manager.git@main"
+      - run: python -m pip install "vllm-hust-ext @ git+https://github.com/vLLM-HUST/extension-manager.git@a39e78ca5d2b36bd09b878a1b6f48a6e61d9302d"
       - run: python -m pip install -e ".[test]" build
       - run: ruff check .
       - run: ruff format --check .

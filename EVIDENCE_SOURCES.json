@@ -1,0 +1,12 @@
+{
+  "repository": "vLLM-HUST/vllm-hust-benchmark",
+  "commit": "ddc4f6a3290e447260fc8f6c03ea36d3ca514e23",
+  "source_repository": "vLLM-HUST/stateaxis-async-kv-transfer",
+  "source_commit": "6024f38e5fd46cc225659b0926e6b782d61dae3a",
+  "manifest": {
+    "path": "archive/mod-git-20261021/stateaxis-async-kv-transfer/manifest.json",
+    "bytes": 12896,
+    "sha256": "51386c5d54fa6f87d6cb6e834c2c7a88b1b5f5b593bd8e7621cd54fce64e493d"
+  },
+  "snapshot": "archive/mod-git-20261021/stateaxis-async-kv-transfer/snapshot"
+}

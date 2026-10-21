@@ -6,11 +6,11 @@
     76
   ],
   "source_evidence": "docs/history/reports/ISSUE76_ASYNC_TRANSFER_LANE_CLOSURE_20260815.md",
-  "copied_evidence": "evidence/ISSUE76_ASYNC_TRANSFER_LANE_CLOSURE_20260815.md",
+  "copied_evidence": "https://github.com/vLLM-HUST/vllm-hust-benchmark/blob/ddc4f6a3290e447260fc8f6c03ea36d3ca514e23/archive/mod-git-20261021/stateaxis-async-kv-transfer/snapshot/evidence/ISSUE76_ASYNC_TRANSFER_LANE_CLOSURE_20260815.md",
   "copied_evidence_sha256": "3a63175a5693ea61f206da4eb9d0494e94f546513d08fb5cfda1cf53a1ce64b4",
-  "machine_readable_evidence": "evidence/issue76-async-transfer-20260815-r5",
+  "machine_readable_evidence": "https://github.com/vLLM-HUST/vllm-hust-benchmark/tree/ddc4f6a3290e447260fc8f6c03ea36d3ca514e23/archive/mod-git-20261021/stateaxis-async-kv-transfer/snapshot/evidence/issue76-async-transfer-20260815-r5",
   "machine_readable_source": "results/issue76-async-transfer-lane-20260815-r5",
-  "machine_readable_sha256_inventory": "evidence/issue76-async-transfer-20260815-r5/SHA256SUMS",
+  "machine_readable_sha256_inventory": "https://github.com/vLLM-HUST/vllm-hust-benchmark/blob/ddc4f6a3290e447260fc8f6c03ea36d3ca514e23/archive/mod-git-20261021/stateaxis-async-kv-transfer/snapshot/evidence/issue76-async-transfer-20260815-r5/SHA256SUMS",
   "qualification_inherited": false,
   "implementation_extracted": true,
   "licensing": {

@@ -1,16 +1,27 @@
-# Evidence index
+# Canonical evidence
 
-This MOD is default-off. Its implementation and activation contract are reviewed
-independently from the historical StateAxis result.
+Raw measured data lives in vllm-hust-benchmark, not this MOD's Git tree.
+This is a custody migration, not a new experiment or qualification.
 
-| Evidence | Label | Meaning |
-| --- | --- | --- |
-| `evidence/ISSUE76_ASYNC_TRANSFER_LANE_CLOSURE_20260815.md` | `matched-real-online-tested-cell` | Historical 3+3 Qwen2.5-14B NPU cell. It shows directional overlap and latency improvement only in that frozen cell. |
-| `evidence/issue76-async-transfer-20260815-r5/` | `historical-matched-real-npu-component-positive` | Machine-readable R5 aggregate, all six arm results and run identities, hardware selection and artifact audits. `RESULT.md` states exact metrics and limits. |
-| `evidence/on-off-preflight-20261010/RESULT.json` | `preflight-not-performance` | Repository/manifest inventory before active extraction. |
-| `evidence/ecpa-matched-process-20261010/SUMMARY.json` | `matched-process-mock-non-performance` | Three interleaved OFF/ON pairs through Extension Manager and the StateAxis process; validates identity, counters, exactness, lifecycle, and fail-closed wiring, not accelerator performance. |
+- [Original report and limitations](https://github.com/vLLM-HUST/vllm-hust-benchmark/blob/ddc4f6a3290e447260fc8f6c03ea36d3ca514e23/archive/mod-git-20261021/stateaxis-async-kv-transfer/snapshot/README.md)
+- [Original detailed evidence index](https://github.com/vLLM-HUST/vllm-hust-benchmark/blob/ddc4f6a3290e447260fc8f6c03ea36d3ca514e23/archive/mod-git-20261021/stateaxis-async-kv-transfer/snapshot/EVIDENCE.md)
+- [Original machine-readable claims](https://github.com/vLLM-HUST/vllm-hust-benchmark/blob/ddc4f6a3290e447260fc8f6c03ea36d3ca514e23/archive/mod-git-20261021/stateaxis-async-kv-transfer/snapshot/MOD_METADATA.json)
+- [Complete frozen snapshot](https://github.com/vLLM-HUST/vllm-hust-benchmark/tree/ddc4f6a3290e447260fc8f6c03ea36d3ca514e23/archive/mod-git-20261021/stateaxis-async-kv-transfer/snapshot/)
+- [Byte inventory and source identity](https://github.com/vLLM-HUST/vllm-hust-benchmark/blob/ddc4f6a3290e447260fc8f6c03ea36d3ca514e23/archive/mod-git-20261021/stateaxis-async-kv-transfer/manifest.json)
 
-The historical result does not qualify version 0.2.0 automatically. A fresh
-ECPA-launched matched ON/OFF campaign must bind the StateAxis commit, this MOD
-commit, manifest identity, hardware, model pack, graph mode, command, dirty
-state, exactness, lifecycle, recovery, and effect counters.
+EVIDENCE_SOURCES.json pins the benchmark commit and manifest SHA256. The helper
+checks every downloaded file against its original length and SHA256, including
+empty or failed records. It never executes downloaded evidence. Use a cache
+outside this repository:
+
+```bash
+python tools/benchmark_evidence.py --all --destination /tmp/stateaxis-async-kv-transfer-evidence
+```
+
+Do not commit cache contents or new experiment outputs here. Submit evidence to
+benchmark and update the pinned source index after integrity verification.
+
+The historical campaign Python source remains under evidence/ as code only.
+Use `python tools/run_matched_campaign.py --output /absolute/external/directory`
+to fetch its verified input configuration and direct new output outside Git.
+This migration does not run that campaign or alter its qualification boundary.
